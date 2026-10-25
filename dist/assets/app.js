@@ -9,12 +9,12 @@ if(hero&&config.cinematicEnabled!==false){
  const host=document.createElement('div');host.className='recovery-host';host.setAttribute('aria-hidden','true');
  const controls=document.createElement('div');controls.className='recovery-controls';
  const skip=document.createElement('button');skip.type='button';skip.textContent='SKIP INTRO';skip.className='recovery-skip';
- const replay=document.createElement('button');replay.type='button';replay.textContent='REPLAY INTRO';replay.setAttribute('aria-label','Replay The Midnight Recovery truck arrival');
+ const replay=document.createElement('button');replay.type='button';replay.textContent='REPLAY INTRO';replay.setAttribute('aria-label','Replay The Midnight Recovery showcase');
  const status=document.createElement('span');status.className='recovery-status';status.textContent='THE MIDNIGHT RECOVERY';
  controls.append(skip,replay);hero.append(host,status,controls);
  const caption=hero.querySelector('.hero-caption');caption.textContent='THE MIDNIGHT RECOVERY / ANIMATED CONCEPT';
  let scene=null,pending=null,active=false,timer=null,version=0,failed=false;
- const key='dave-truck-arrival-v1';
+ const key='dave-parked-showcase-v1';
  function remember(){try{sessionStorage.setItem(key,'1')}catch{}}
  function finish(fallback=false){
   version++;active=false;clearTimeout(timer);hero.classList.remove('recovery-playing');content.inert=false;content.removeAttribute('aria-hidden');
@@ -27,8 +27,8 @@ if(hero&&config.cinematicEnabled!==false){
   const turn=++version;active=true;window.scrollTo({top:0,behavior:'instant'});hero.classList.add('recovery-playing');content.inert=true;content.setAttribute('aria-hidden','true');
   timer=setTimeout(()=>finish(true),14000);
   try{
-   if(!scene){pending||=import('./recovery-scene.js').then(module=>module.createRecovery(host));const built=await pending;if(turn!==version){built.dispose();pending=null;return}scene=built;scene.renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();finish(true)},{once:true})}
-   if(turn!==version)return;clearTimeout(timer);hero.classList.add('recovery-ready');scene.play();timer=setTimeout(()=>finish(),8500);
+   if(!scene){pending||=import('./recovery-scene.js?v=parked-v1').then(module=>module.createRecovery(host));const built=await pending;if(turn!==version){built.dispose();pending=null;return}scene=built;scene.renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();finish(true)},{once:true})}
+   if(turn!==version)return;clearTimeout(timer);hero.classList.add('recovery-ready');scene.play();timer=setTimeout(()=>finish(),4700);
   }catch(error){console.warn('Recovery scene unavailable; showing photo fallback.',error);finish(true)}
  }
  host.addEventListener('recovery-ended',()=>finish());skip.addEventListener('click',()=>finish());replay.addEventListener('click',()=>play(true));
