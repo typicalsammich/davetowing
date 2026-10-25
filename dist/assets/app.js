@@ -2,19 +2,19 @@ const menu=document.querySelector('#menu'),nav=document.querySelector('nav');men
 
 
 
-// A six-second kinetic brand film, rendered with composited CSS layers.
+// A single, calm logo composition with an amber light sweep.
 const hero=document.querySelector('.hero'),config=window.DAVE_CONFIG,motion=matchMedia('(prefers-reduced-motion:reduce)');
 if(hero&&config.cinematicEnabled!==false){
  const content=hero.querySelector('.hero-content');
  const film=document.createElement('div');film.className='brand-film';film.setAttribute('aria-hidden','true');
- film.innerHTML='<div class="bf-road"><div class="bf-horizon"></div><div class="bf-asphalt"><i></i><i></i><i></i></div><div class="bf-type bf-opening"><span>ROAD</span><span>STOPS.</span></div><span class="bf-label">THE MOMENT EVERYTHING CHANGES.</span></div><div class="bf-photo"><div class="bf-photo-image"></div><div class="bf-photo-shade"></div><div class="bf-type bf-call"><span>ONE</span><span>CALL.</span></div><div class="bf-scan"></div></div><div class="bf-gold"><div class="bf-type bf-dave">DAVE.</div><span class="bf-gold-caption">TOWING &amp; ROADSIDE ASSISTANCE</span></div><div class="bf-finale"><img class="bf-logo" src="/assets/dave-towing-selected-logo.webp" alt="" width="640" height="438"><div class="bf-final-copy"><span>BACK IN</span><span>MOTION.</span></div><span class="bf-final-caption">FAST. RELIABLE. AFFORDABLE.</span></div><div class="bf-rail"><span>DAVE TOWING</span><span>414-629-3990</span></div><div class="bf-progress"></div>';
+ film.innerHTML='<div class="lf-backdrop"></div><div class="lf-vignette"></div><div class="lf-amber"></div><div class="lf-composition"><div class="lf-logo-wrap"><img class="lf-logo" src="/assets/dave-towing-selected-logo.webp" width="640" height="438" alt=""><div class="lf-light"></div></div><div class="lf-rule"></div></div>';
  const controls=document.createElement('div');controls.className='brand-controls';
  const skip=document.createElement('button');skip.type='button';skip.textContent='SKIP INTRO';skip.className='brand-skip';
- const replay=document.createElement('button');replay.type='button';replay.textContent='REPLAY INTRO';replay.setAttribute('aria-label','Replay the Dave Towing brand film');
- controls.append(skip,replay);hero.append(film,controls);hero.querySelector('.hero-caption').textContent='DAVE TOWING / BACK IN MOTION';
- let active=false,timer=null;const key='dave-brand-film-v1';
- function finish(){if(!active)return;active=false;clearTimeout(timer);hero.classList.remove('brand-playing');content.inert=false;content.removeAttribute('aria-hidden');try{sessionStorage.setItem(key,'1')}catch{}if(document.activeElement===skip)replay.focus({preventScroll:true})}
- function play(manual=false){if(active||motion.matches||(!manual&&navigator.connection?.saveData))return;active=true;window.scrollTo({top:0,behavior:'instant'});hero.classList.add('brand-playing');content.inert=true;content.setAttribute('aria-hidden','true');timer=setTimeout(finish,6500)}
+ const replay=document.createElement('button');replay.type='button';replay.textContent='REPLAY INTRO';replay.setAttribute('aria-label','Replay the Dave Towing cinematic opening');
+ controls.append(skip,replay);hero.append(film,controls);hero.querySelector('.hero-caption').textContent='DAVE TOWING / HERE WHEN YOU NEED US';
+ let active=false,timer=null;const key='dave-logo-film-v1';
+ function finish(){if(!active)return;active=false;clearTimeout(timer);hero.classList.remove('brand-playing');hero.classList.add('brand-viewed');content.inert=false;content.removeAttribute('aria-hidden');try{sessionStorage.setItem(key,'1')}catch{}if(document.activeElement===skip)replay.focus({preventScroll:true})}
+ function play(manual=false){if(active||motion.matches||(!manual&&navigator.connection?.saveData))return;active=true;window.scrollTo({top:0,behavior:'instant'});hero.classList.add('brand-playing');content.inert=true;content.setAttribute('aria-hidden','true');timer=setTimeout(finish,6300)}
  film.addEventListener('animationend',event=>{if(event.animationName==='bf-exit')finish()});skip.addEventListener('click',finish);replay.addEventListener('click',()=>play(true));document.addEventListener('keydown',event=>{if(event.key==='Escape')finish()});document.addEventListener('visibilitychange',()=>{if(document.hidden)finish()});motion.addEventListener('change',event=>{controls.hidden=event.matches;if(event.matches)finish()});controls.hidden=motion.matches;
  let seen=false;try{seen=sessionStorage.getItem(key)==='1'}catch{}if(!seen)play();
 }
