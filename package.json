@@ -1,0 +1,12 @@
+{
+  "name": "dave-towing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dave Towing static business website",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node server.mjs",
+    "check": "node --check dist/assets/app.js"
+  }
+}

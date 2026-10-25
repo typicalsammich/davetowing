@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dave-towing-recovery.typical-sammich.chatgpt.site/sitemap.xml
