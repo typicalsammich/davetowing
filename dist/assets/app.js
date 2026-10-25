@@ -29,7 +29,7 @@ if(hero&&config.cinematicEnabled!==false){
   timer=setTimeout(finish,5200);
  }
  skip.addEventListener('click',finish);
- replay.addEventListener('click',()=>{hero.scrollIntoView({block:'start',behavior:'instant'});play(true)});
+ replay.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'instant'});play(true)});
  document.addEventListener('keydown',event=>{if(event.key==='Escape')finish()});
  motion.addEventListener('change',event=>{if(event.matches)finish();controls.hidden=motion.matches});controls.hidden=motion.matches;
  document.addEventListener('visibilitychange',()=>{if(document.hidden)finish()});

@@ -33,3 +33,4 @@
 @media(max-width:760px){.hero-image{transform-origin:68% 38%}.cin-title{left:6%;bottom:31%;max-width:85%}.cin-title strong{font-size:42px}.cin-title span{font-size:8px;letter-spacing:2px}.cin-controls{right:5%;bottom:8px}.cin-controls button{min-width:90px;font-size:8px;padding:10px 12px}.hero-caption{bottom:auto}}
 @media(prefers-reduced-motion:reduce){.cin-controls,.cin-effects{display:none!important}.cin-playing .hero-content{opacity:1;transform:none}.cin-playing .hero-image{transform:none;filter:none}}
 .cin-ready:not(.cin-playing) .hero-content{animation:none}
+@media(max-width:760px){.hero{min-height:760px}.hero-content{padding-top:240px}.cin-controls{top:12px;bottom:auto}.hero-caption{top:72px;bottom:auto}.hero-facts{padding-bottom:24px}}
