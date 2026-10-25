@@ -10,3 +10,26 @@
 
 /* User-selected illustrated emblem */
 .brand .site-logo{width:110px;height:auto;max-height:82px;object-fit:contain}.footer-brand .site-logo{width:210px;height:auto}@media(max-width:760px){.brand .site-logo{width:88px;max-height:65px}.footer-brand .site-logo{width:165px}}@media(max-width:360px){.brand .site-logo{width:80px}}
+
+/* The Midnight Recovery: animated artwork sequence */
+.hero{isolation:isolate}.hero-image{transform-origin:67% 54%;will-change:auto}
+.cin-effects{position:absolute;inset:0;z-index:2;pointer-events:none;visibility:hidden;overflow:hidden}
+.cin-dark,.cin-amber,.cin-grain{position:absolute;inset:0}.cin-dark{background:#050505;opacity:0}
+.cin-amber{background:radial-gradient(ellipse at 72% 23%,#ffb80033,transparent 32%),radial-gradient(ellipse at 68% 90%,#db840022,transparent 40%);mix-blend-mode:screen;opacity:0}
+.cin-grain{opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.6' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cin-title{position:absolute;left:6%;bottom:26%;opacity:0;text-shadow:0 2px 28px #000}.cin-title span{display:block;font-size:10px;letter-spacing:4px;color:#ffc400;margin-bottom:18px}.cin-title strong{display:block;font:800 clamp(35px,4.8vw,72px)/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.5px}
+.cin-progress{position:absolute;bottom:0;left:0;width:100%;height:2px;background:#ffc400;transform:scaleX(0);transform-origin:left}
+.cin-controls{position:absolute;right:4%;bottom:18px;z-index:5}.cin-controls button{min-height:44px;min-width:100px;padding:12px 16px;border:1px solid #777;background:#090909bf;color:#eee;font-size:9px;letter-spacing:1.5px;cursor:pointer;backdrop-filter:blur(6px)}.cin-controls button:hover{color:#ffc400;border-color:#ffc400}.cin-skip{display:none}.cin-playing .cin-skip{display:block}.cin-playing .cin-replay{display:none}.hero-caption{bottom:72px}
+.cin-playing .cin-effects{visibility:visible}.cin-playing .hero-image{animation:cin-camera 5.2s cubic-bezier(.2,.45,.25,1) both;will-change:transform}
+.cin-playing .cin-dark{animation:cin-exposure 5.2s linear both}.cin-playing .cin-amber{animation:cin-warmth 5.2s ease-in-out both}
+.cin-playing .cin-title{animation:cin-copy 5.2s ease both}.cin-playing .cin-progress{animation:cin-timeline 5.2s linear both}
+.cin-playing .hero-content{animation:cin-home 5.2s ease both;pointer-events:none}
+@keyframes cin-camera{0%{transform:scale(1.16) translateX(-2%);filter:brightness(.55)}30%{filter:brightness(.95)}100%{transform:scale(1) translateX(0);filter:brightness(1)}}
+@keyframes cin-exposure{0%{opacity:.95}24%{opacity:.22}63%{opacity:.08}100%{opacity:0}}
+@keyframes cin-warmth{0%,10%{opacity:0}30%{opacity:.5}48%{opacity:.2}64%{opacity:.45}100%{opacity:0}}
+@keyframes cin-copy{0%,13%{opacity:0;transform:translateY(8px)}25%,52%{opacity:1;transform:translateY(0)}65%,100%{opacity:0;transform:translateY(-5px)}}
+@keyframes cin-timeline{to{transform:scaleX(1)}}
+@keyframes cin-home{0%,65%{opacity:0;transform:translateY(15px)}100%{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.hero-image{transform-origin:68% 38%}.cin-title{left:6%;bottom:31%;max-width:85%}.cin-title strong{font-size:42px}.cin-title span{font-size:8px;letter-spacing:2px}.cin-controls{right:5%;bottom:8px}.cin-controls button{min-width:90px;font-size:8px;padding:10px 12px}.hero-caption{bottom:auto}}
+@media(prefers-reduced-motion:reduce){.cin-controls,.cin-effects{display:none!important}.cin-playing .hero-content{opacity:1;transform:none}.cin-playing .hero-image{transform:none;filter:none}}
+.cin-ready:not(.cin-playing) .hero-content{animation:none}
